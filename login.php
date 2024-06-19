@@ -21,16 +21,13 @@
     $_SESSION["user"]="";
     $_SESSION["usertype"]="";
     
-    // Set the new timezone
-    // TODO: setting the time zone
-    date_default_timezone_set('Asia/Kolkata');
+    date_default_timezone_set('Africa/Addis_Ababa');
     $date = date('Y-m-d');
 
     $_SESSION["date"]=$date;
     
 
-    //import database
-    // include("connection.php");
+    include("connection.php");
 
     if($_POST){
 

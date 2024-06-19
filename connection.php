@@ -1,6 +1,6 @@
 <?php
 
-    $database= new mysqli("localhost","root","","tena_hms");
+    $database= new mysqli("localhost","root","","tena");
     if ($database->connect_error){
         die("Connection failed:  ".$database->connect_error);
     }
