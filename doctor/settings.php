@@ -253,7 +253,7 @@
                         <h2></h2>
                         <a class="close" href="settings.php">&times;</a>
                         <div class="content">
-                            eDoc Web App<br>
+                            Tena Web App<br>
                             
                         </div>
                         <div style="display: flex;justify-content: center;">
