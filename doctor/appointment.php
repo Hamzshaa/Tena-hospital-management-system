@@ -42,8 +42,8 @@
        $userfetch=$userrow->fetch_assoc();
        $userid= $userfetch["docid"];
        $username=$userfetch["docname"];
+    //echo $userid;
     ?>
-
     <div class="container">
         <div class="menu">
         <table class="menu-container" border="0">
@@ -128,6 +128,16 @@
 
 
                 </tr>
+               
+                <!-- <tr>
+                    <td colspan="4" >
+                        <div style="display: flex;margin-top: 40px;">
+                        <div class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49);margin-top: 5px;">Schedule a Session</div>
+                        <a href="?action=add-session&id=none&error=0" class="non-style-link"><button  class="login-btn btn-primary btn button-icon"  style="margin-left:25px;background-image: url('../img/icons/add.svg');">Add a Session</font></button>
+                        </a>
+                        </div>
+                    </td>
+                </tr> -->
                 <tr>
                     <td colspan="4" style="padding-top:10px;width: 100%;" >
                     
@@ -172,11 +182,23 @@
                     $sqlmain= "select appointment.appoid,schedule.scheduleid,schedule.title,doctor.docname,patient.pname,schedule.scheduledate,schedule.scheduletime,appointment.apponum,appointment.appodate from schedule inner join appointment on schedule.scheduleid=appointment.scheduleid inner join patient on patient.pid=appointment.pid inner join doctor on schedule.docid=doctor.docid  where  doctor.docid=$userid ";
 
                     if($_POST){
+                        //print_r($_POST);
+                        
+
+
+                        
                         if(!empty($_POST["sheduledate"])){
                             $sheduledate=$_POST["sheduledate"];
                             $sqlmain.=" and schedule.scheduledate='$sheduledate' ";
                         };
+
+                        
+
+                        //echo $sqlmain;
+
                     }
+
+
                 ?>
                   
                 <tr>
@@ -190,23 +212,41 @@
                                     Patient name
                                 </th>
                                 <th class="table-headin">
+                                    
                                     Appointment number
+                                    
                                 </th>
+                               
                                 <th class="table-headin">
+                                    
+                                
                                     Session Title
-                                </th>
+                                    
+                                    </th>
+                                
                                 <th class="table-headin" >
+                                    
                                     Session Date & Time
+                                    
                                 </th>
+                                
                                 <th class="table-headin">
+                                    
                                     Appointment Date
+                                    
                                 </th>
+                                
                                 <th class="table-headin">
+                                    
                                     Events
+                                    
                                 </tr>
                         </thead>
                         <tbody>
+                        
                             <?php
+
+                                
                                 $result= $database->query($sqlmain);
 
                                 if($result->num_rows==0){
@@ -280,6 +320,9 @@
                         </center>
                    </td> 
                 </tr>
+                       
+                        
+                        
             </table>
         </div>
     </div>
@@ -294,6 +337,8 @@
             <div id="popup1" class="overlay">
                     <div class="popup">
                     <center>
+                    
+                    
                         <a class="close" href="schedule.php">&times;</a> 
                         <div style="display: flex;justify-content: center;">
                         <div class="abc">
@@ -341,6 +386,10 @@
                                             $id00=$row00["docid"];
                                             echo "<option value=".$id00.">$sn</option><br/>";
                                         };
+        
+        
+        
+                                        
                         echo     '       </select><br><br>
                                 </td>
                             </tr>
@@ -529,8 +578,13 @@
                             <tr>
                                 <td colspan="2">
                                     <a href="doctors.php"><input type="button" value="OK" class="login-btn btn-primary-soft btn" ></a>
+                                
+                                    
                                 </td>
+                
                             </tr>
+                           
+
                         </table>
                         </div>
                     </center>

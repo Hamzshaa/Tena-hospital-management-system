@@ -25,6 +25,7 @@
 
     if(isset($_SESSION["user"])){
         if(($_SESSION["user"])=="" or $_SESSION['usertype']!='a'){
+            //header("location: ../login.php");
         }else{
             $useremail=$_SESSION["user"];
         }
@@ -33,9 +34,13 @@
         header("location: ../login.php");
     }
     
-    include("../connection.php");
-    ?>
+    
 
+    //import database
+    include("../connection.php");
+
+    
+    ?>
     <div class="container">
         <div class="menu">
             <table class="menu-container" border="0">
@@ -114,6 +119,8 @@
 
                             echo ' </datalist>';
 ?>
+                            
+                       
                             <input type="Submit" value="Search" class="login-btn btn-primary btn" style="padding-left: 25px;padding-right: 25px;padding-top: 10px;padding-bottom: 10px;">
                         
                         </form>
@@ -134,6 +141,8 @@
                     <td width="10%">
                         <button  class="btn-label"  style="display: flex;justify-content: center;align-items: center;"><img src="../img/calendar.svg" width="100%"></button>
                     </td>
+
+
                 </tr>
                
                 <tr >
@@ -159,6 +168,9 @@
                         $sqlmain= "select * from doctor order by docid desc";
 
                     }
+
+
+
                 ?>
                   
                 <tr>
@@ -169,6 +181,8 @@
                         <thead>
                         <tr>
                                 <th class="table-headin">
+                                    
+                                
                                 Doctor Name
                                 
                                 </th>
@@ -254,6 +268,9 @@
                         </center>
                    </td> 
                 </tr>
+                       
+                        
+                        
             </table>
         </div>
     </div>
@@ -371,6 +388,8 @@
                             <tr>
                                 <td colspan="2">
                                     <a href="doctors.php"><input type="button" value="OK" class="login-btn btn-primary-soft btn" ></a>
+                                
+                                    
                                 </td>
                 
                             </tr>

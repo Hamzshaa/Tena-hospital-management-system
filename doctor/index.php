@@ -43,12 +43,17 @@
     }
     
 
+    //import database
     include("../connection.php");
     $userrow = $database->query("select * from doctor where docemail='$useremail'");
     $userfetch=$userrow->fetch_assoc();
     $userid= $userfetch["docid"];
     $username=$userfetch["docname"];
 
+
+    //echo $userid;
+    //echo $username;
+    
     ?>
     <div class="container">
         <div class="menu">
@@ -120,7 +125,7 @@
                                 </p>
                                 <p class="heading-sub12" style="padding: 0;margin: 0;">
                                     <?php 
-                                date_default_timezone_set('Asia/Kolkata');
+                                date_default_timezone_set('Africa/Addis_Ababa');
         
                                 $today = date('Y-m-d');
                                 echo $today;
@@ -168,6 +173,12 @@
                         <table border="0" width="100%"">
                             <tr>
                                 <td width="50%">
+
+                                    
+
+
+
+
                                     <center>
                                         <table class="filter-container" style="border: none;" border="0">
                                             <tr>
@@ -216,6 +227,7 @@
                                                         </div>
                                                                 <div class="btn-icon-back dashboard-icons" style="margin-left: 0px;background-image: url('../img/icons/book-hover.svg');"></div>
                                                     </div>
+                                                    
                                                 </td>
 
                                                 <td style="width: 25%;">
@@ -231,33 +243,62 @@
                                                                 <div class="btn-icon-back dashboard-icons" style="background-image: url('../img/icons/session-iceblue.svg');"></div>
                                                     </div>
                                                 </td>
+                                                
                                             </tr>
                                         </table>
                                     </center>
+
+
+
+
+
+
+
+
                                 </td>
                                 <td>
+
+
+                            
                                     <p id="anim" style="font-size: 20px;font-weight:600;padding-left: 40px;">Your Up Coming Sessions until Next week</p>
                                     <center>
                                         <div class="abc scroll" style="height: 250px;padding: 0;margin: 0;">
                                         <table width="85%" class="sub-table scrolldown" border="0" >
                                         <thead>
+                                            
                                         <tr>
-                                            <th class="table-headin">Session Title</th>
-                                            <th class="table-headin">Scheduled Date</th>
-                                            <th class="table-headin">Time</th>
-                                        </tr>
+                                                <th class="table-headin">
+                                                    
+                                                
+                                                Session Title
+                                                
+                                                </th>
+                                                
+                                                <th class="table-headin">
+                                                Sheduled Date
+                                                </th>
+                                                <th class="table-headin">
+                                                    
+                                                     Time
+                                                    
+                                                </th>
+                                                    
+                                                </tr>
                                         </thead>
                                         <tbody>
+                                        
                                             <?php
                                             $nextweek=date("Y-m-d",strtotime("+1 week"));
                                             $sqlmain= "select schedule.scheduleid,schedule.title,doctor.docname,schedule.scheduledate,schedule.scheduletime,schedule.nop from schedule inner join doctor on schedule.docid=doctor.docid  where schedule.scheduledate>='$today' and schedule.scheduledate<='$nextweek' order by schedule.scheduledate desc"; 
                                                 $result= $database->query($sqlmain);
+                
                                                 if($result->num_rows==0){
                                                     echo '<tr>
                                                     <td colspan="4">
                                                     <br><br><br><br>
                                                     <center>
                                                     <img src="../img/notfound.svg" width="25%">
+                                                    
                                                     <br>
                                                     <p class="heading-main12" style="margin-left: 45px;font-size:20px;color:rgb(49, 49, 49)">We  couldnt find anything related to your keywords !</p>
                                                     <a class="non-style-link" href="schedule.php"><button  class="login-btn btn-primary-soft btn"  style="display: flex;justify-content: center;align-items: center;margin-left:20px;">&nbsp; Show all Sessions &nbsp;</font></button>
@@ -266,6 +307,7 @@
                                                     <br><br><br><br>
                                                     </td>
                                                     </tr>';
+                                                    
                                                 }
                                                 else{
                                                 for ( $x=0; $x<$result->num_rows;$x++){
@@ -286,14 +328,28 @@
                                                         <td style="text-align:center;">
                                                             '.substr($scheduletime,0,5).'
                                                         </td>
+
+                
+                                                       
                                                     </tr>';
+                                                    
                                                 }
                                             }
+                                                 
                                             ?>
+                 
                                             </tbody>
+                
                                         </table>
                                         </div>
                                         </center>
+
+
+
+
+
+
+
                                 </td>
                             </tr>
                         </table>
@@ -302,5 +358,7 @@
             </table>
         </div>
     </div>
+
+
 </body>
 </html>

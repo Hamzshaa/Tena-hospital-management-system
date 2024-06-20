@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="../css/main.css">  
     <link rel="stylesheet" href="../css/admin.css">
         
+
+
     <title>Settings</title>
     <style>
         .dashbord-tables{
@@ -20,6 +22,8 @@
             animation: transitionIn-Y-bottom 0.5s;
         }
     </style>
+    
+    
 </head>
 <body>
     <?php
@@ -38,13 +42,18 @@
     }
     
 
+    //import database
     include("../connection.php");
     $userrow = $database->query("select * from doctor where docemail='$useremail'");
     $userfetch=$userrow->fetch_assoc();
     $userid= $userfetch["docid"];
     $username=$userfetch["docname"];
-    ?>
 
+
+    //echo $userid;
+    //echo $username;
+    
+    ?>
     <div class="container">
         <div class="menu">
             <table class="menu-container" border="0">
@@ -107,30 +116,39 @@
                     </td>
                     <td>
                         <p style="font-size: 23px;padding-left:12px;font-weight: 600;">Settings</p>
+                                           
                     </td>
+                    
                             <td width="15%">
                                 <p style="font-size: 14px;color: rgb(119, 119, 119);padding: 0;margin: 0;text-align: right;">
                                     Today's Date
                                 </p>
                                 <p class="heading-sub12" style="padding: 0;margin: 0;">
-                                <?php 
-                                    date_default_timezone_set('Africa/Addis_Ababa');
-                                    $today = date('Y-m-d');
-                                    echo $today;
+                                    <?php 
+                                date_default_timezone_set('Africa/Addis_Ababa');
+        
+                                $today = date('Y-m-d');
+                                echo $today;
 
-                                    $patientrow = $database->query("select  * from  patient;");
-                                    $doctorrow = $database->query("select  * from  doctor;");
-                                    $appointmentrow = $database->query("select  * from  appointment where appodate>='$today';");
-                                    $schedulerow = $database->query("select  * from  schedule where scheduledate='$today';");
+
+                                $patientrow = $database->query("select  * from  patient;");
+                                $doctorrow = $database->query("select  * from  doctor;");
+                                $appointmentrow = $database->query("select  * from  appointment where appodate>='$today';");
+                                $schedulerow = $database->query("select  * from  schedule where scheduledate='$today';");
+
+
                                 ?>
                                 </p>
                             </td>
                             <td width="10%">
                                 <button  class="btn-label"  style="display: flex;justify-content: center;align-items: center;"><img src="../img/calendar.svg" width="100%"></button>
                             </td>
+        
+        
                         </tr>
                 <tr>
                     <td colspan="4">
+                        
                         <center>
                         <table class="filter-container" style="border: none;" border="0">
                             <tr>
@@ -152,9 +170,12 @@
                                                     Edit your Account Details & Change Password
                                                 </div>
                                         </div>
+                                                
                                     </div>
                                     </a>
                                 </td>
+                                
+                                
                             </tr>
                             <tr>
                                 <td colspan="4">
@@ -169,14 +190,17 @@
                                         <div>
                                                 <div class="h1-dashboard" >
                                                     View Account Details
+                                                    
                                                 </div><br>
                                                 <div class="h3-dashboard"  style="font-size: 15px;">
                                                     View Personal information About Your Account
                                                 </div>
                                         </div>
+                                                
                                     </div>
                                     </a>
                                 </td>
+                                
                             </tr>
                             <tr>
                                 <td colspan="4">
@@ -191,19 +215,23 @@
                                         <div>
                                                 <div class="h1-dashboard" style="color: #ff5050;">
                                                     Delete Account
+                                                    
                                                 </div><br>
                                                 <div class="h3-dashboard"  style="font-size: 15px;">
                                                     Will Permanently Remove your Account
                                                 </div>
                                         </div>
+                                                
                                     </div>
                                     </a>
                                 </td>
+                                
                             </tr>
                         </table>
                     </center>
                     </td>
                 </tr>
+            
             </table>
         </div>
     </div>
@@ -445,6 +473,10 @@
                                                     $id00=$row00["id"];
                                                     echo "<option value=".$id00.">$sn</option><br/>";
                                                 };
+                
+                
+                
+                                                
                                 echo     '       </select><br><br>
                                         </td>
                                     </tr>
@@ -467,13 +499,17 @@
                                             <input type="password" name="cpassword" class="input-text" placeholder="Conform Password" required><br>
                                         </td>
                                     </tr>
+                                    
+                        
                                     <tr>
                                         <td colspan="2">
                                             <input type="reset" value="Reset" class="login-btn btn-primary-soft btn" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         
                                             <input type="submit" value="Save" class="login-btn btn-primary btn">
                                         </td>
+                        
                                     </tr>
+                                
                                     </form>
                                     </tr>
                                 </table>
@@ -507,6 +543,8 @@
                 </div>
                 </div>
     ';
+
+
 
         }; }
 

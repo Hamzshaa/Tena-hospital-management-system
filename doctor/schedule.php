@@ -33,14 +33,17 @@
     }else{
         header("location: ../login.php");
     }
+    
+    
 
+    //import database
     include("../connection.php");
     $userrow = $database->query("select * from doctor where docemail='$useremail'");
     $userfetch=$userrow->fetch_assoc();
     $userid= $userfetch["docid"];
     $username=$userfetch["docname"];
+ //echo $userid;
  ?>
-
  <div class="container">
      <div class="menu">
      <table class="menu-container" border="0">
@@ -110,8 +113,7 @@
                         <p class="heading-sub12" style="padding: 0;margin: 0;">
                             <?php 
 
-                        date_default_timezone_set('Asia/Kolkata');
-
+                        date_default_timezone_set('Africa/Addis_Ababa');
                         $today = date('Y-m-d');
                         echo $today;
 
@@ -123,12 +125,19 @@
                     <td width="10%">
                         <button  class="btn-label"  style="display: flex;justify-content: center;align-items: center;"><img src="../img/calendar.svg" width="100%"></button>
                     </td>
+
+
                 </tr>
+               
+                
                 <tr>
                     <td colspan="4" style="padding-top:10px;width: 100%;" >
+                    
                         <p class="heading-main12" style="margin-left: 45px;font-size:18px;color:rgb(49, 49, 49)">My Sessions (<?php echo $list110->num_rows; ?>) </p>
                     </td>
+                    
                 </tr>
+                
                 <tr>
                     <td colspan="4" style="padding-top:0px;width: 100%;" >
                         <center>
@@ -142,8 +151,11 @@
                         </td>
                         <td width="30%">
                         <form action="" method="post">
+                            
                             <input type="date" name="sheduledate" id="date" class="input-text filter-container-items" style="margin: 0;width: 95%;">
+
                         </td>
+                        
                     <td width="12%">
                         <input type="submit"  name="filter" value=" Filter" class=" btn-primary-soft btn button-icon btn-filter"  style="padding: 15px; margin :0;width:100%">
                         </form>
@@ -179,13 +191,36 @@
                         <table width="93%" class="sub-table scrolldown" border="0">
                         <thead>
                         <tr>
-                                <th class="table-headin">Session Title</th>
-                                <th class="table-headin">Sheduled Date & Time</th>
-                                <th class="table-headin">Max num that can be booked</th>
-                                <th class="table-headin">Events</tr>
+                                <th class="table-headin">
+                                    
+                                
+                                Session Title
+                                
+                                </th>
+                                
+                                
+                                <th class="table-headin">
+                                    
+                                    Sheduled Date & Time
+                                    
+                                </th>
+                                <th class="table-headin">
+                                    
+                                Max num that can be booked
+                                    
+                                </th>
+                                
+                                <th class="table-headin">
+                                    
+                                    Events
+                                    
+                                </tr>
                         </thead>
                         <tbody>
+                        
                             <?php
+
+                                
                                 $result= $database->query($sqlmain);
 
                                 if($result->num_rows==0){
@@ -248,6 +283,9 @@
                         </center>
                    </td> 
                 </tr>
+                       
+                        
+                        
             </table>
         </div>
     </div>
@@ -286,7 +324,10 @@
             $title=$row["title"];
             $scheduledate=$row["scheduledate"];
             $scheduletime=$row["scheduletime"];
+            
+           
             $nop=$row['nop'];
+
 
             $sqlmain12= "select * from appointment inner join patient on patient.pid=appointment.pid inner join schedule on schedule.scheduleid=appointment.scheduleid where schedule.scheduleid=$id;";
             $result12= $database->query($sqlmain12);
@@ -297,6 +338,8 @@
                         <h2></h2>
                         <a class="close" href="schedule.php">&times;</a>
                         <div class="content">
+                            
+                            
                         </div>
                         <div class="abc scroll" style="display: flex;justify-content: center;">
                         <table width="80%" class="sub-table scrolldown add-doc-form-container" border="0">
@@ -306,7 +349,9 @@
                                     <p style="padding: 0;margin: 0;text-align: left;font-size: 25px;font-weight: 500;">View Details.</p><br><br>
                                 </td>
                             </tr>
+                            
                             <tr>
+                                
                                 <td class="label-td" colspan="2">
                                     <label for="name" class="form-label">Session Title: </label>
                                 </td>
@@ -315,6 +360,7 @@
                                 <td class="label-td" colspan="2">
                                     '.$title.'<br><br>
                                 </td>
+                                
                             </tr>
                             <tr>
                                 <td class="label-td" colspan="2">
@@ -352,6 +398,8 @@
                                     <br><br>
                                 </td>
                             </tr>
+
+                            
                             <tr>
                             <td colspan="4">
                                 <center>
@@ -359,13 +407,29 @@
                                  <table width="100%" class="sub-table scrolldown" border="0">
                                  <thead>
                                  <tr>   
-                                        <th class="table-headin">Patient ID</th>
-                                         <th class="table-headin">Patient name</th>
-                                         <th class="table-headin">Appointment number</th>
-                                         <th class="table-headin">Patient Telephone</th>
+                                        <th class="table-headin">
+                                             Patient ID
+                                         </th>
+                                         <th class="table-headin">
+                                             Patient name
+                                         </th>
+                                         <th class="table-headin">
+                                             
+                                             Appointment number
+                                             
+                                         </th>
+                                        
+                                         
+                                         <th class="table-headin">
+                                             Patient Telephone
+                                         </th>
                                          
                                  </thead>
                                  <tbody>';
+                                 
+                
+                
+                                         
                                          $result= $database->query($sqlmain12);
                 
                                          if($result->num_rows==0){
@@ -408,16 +472,25 @@
                                                  <td>
                                                  '.substr($ptel,0,25).'
                                                  </td>
+                                                 
+                                                 
+                
+                                                 
                                              </tr>';
                                              
                                          }
                                      }
+                                          
+                                     
+                
                                     echo '</tbody>
+                
                                  </table>
                                  </div>
                                  </center>
                             </td> 
                          </tr>
+
                         </table>
                         </div>
                     </center>
@@ -430,5 +503,6 @@
 
     ?>
     </div>
+
 </body>
 </html>
